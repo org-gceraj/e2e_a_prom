@@ -7,8 +7,7 @@ https://github.com/org-gceraj/e2e_a_ui
 
 git remote remove origin
 git remote add origin git@github.com:org-gceraj/e2e_a_prom.git
-git checkout main
-
+git branch -M main
 gh repo create org-gceraj/e2e_a_ui --public --source=. --push
 
 git status && git add . && git commit -m "1.1 initial commit" && git push origin main
