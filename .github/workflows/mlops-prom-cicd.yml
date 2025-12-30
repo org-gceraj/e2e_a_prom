@@ -13,12 +13,11 @@ jobs:
     name: Build & Push to DockerHub
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Variable set
-        environment:
-          FASTAPI_HOST: ${{ env.FASTAPI_HOST }}
-          STREAMLIT_HOST: ${{ env.STREAMLIT_HOST }}
+    env:
+      FASTAPI_HOST: ${{ env.FASTAPI_HOST }}
+      STREAMLIT_HOST: ${{ env.STREAMLIT_HOST }}
 
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
