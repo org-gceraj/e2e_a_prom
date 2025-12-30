@@ -39,27 +39,25 @@ jobs:
  # JOB 2: Deploy to EC2
  # =============================
   deploy:
+    name: Deploy to EC2
     needs: build
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_STEP_DEBUG: true
-      ACTIONS_RUNNER_DEBUG: true
 
     steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
-          chmod 600 ~/.ssh/authorized_keys
-          ssh-keyscan -H ${{ secrets.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
+        chmod 600 ~/.ssh/authorized_keys
+        ssh-keyscan -H ${{ secrets.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Debug SSH Connection
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "echo connected"
-      
-      - name: Deploy
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "whoami"
+    - name: Debug SSH Connection
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "echo connected"
+    
+    - name: Deploy
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "whoami"
   
 #    steps:
 #      - name: Deploy via SSH
