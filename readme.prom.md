@@ -2,6 +2,7 @@
 
 GIT Bash
 cd /C/MLOps_V2/Prometheus_GITHUB/C1_PROM
+git status && git add . && git commit -m "1.2 initial commit" && git push origin main
 
 https://github.com/org-gceraj/e2e_a_ui
 
@@ -10,7 +11,6 @@ git remote add origin git@github.com:org-gceraj/e2e_a_prom.git
 git branch -M main
 gh repo create org-gceraj/e2e_a_ui --public --source=. --push
 
-git status && git add . && git commit -m "1.1 initial commit" && git push origin main
 
 ----------------------------------------------------------------
 
