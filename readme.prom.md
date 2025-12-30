@@ -37,3 +37,10 @@ docker run --name prom --network sentiment-net -p 9090:9090 -it gceraj/e2e_v1-pr
 
 http://localhost:8501/
 http://localhost:9090
+
+----------------------------------------------------------------
+
+cd C:\MLOps_V2\Prometheus_GITHUB
+ssh -i id_ed25519 devopsadmin@98.92.118.33
+
+----------------------------------------------------------------
