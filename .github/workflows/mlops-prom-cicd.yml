@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Variable set
+        environment:
+          FASTAPI_HOST: ${{ env.FASTAPI_HOST }}
+          STREAMLIT_HOST: ${{ env.STREAMLIT_HOST }}
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -50,3 +55,12 @@ jobs:
             docker stop e2e_v1-prom || true
             docker rm e2e_v1-prom || true
             docker run -d --name e2e_v1-prom -p 9090:9090 ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
+
+#services:
+#  prometheus:
+#    build: .
+#    environment:
+#      FASTAPI_HOST: fastapi
+#      STREAMLIT_HOST: streamlit
+#    ports:
+#      - "9090:9090"

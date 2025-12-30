@@ -6,9 +6,9 @@ scrape_configs:
   - job_name: "fastapi"
     scrape_interval: 5s
     static_configs:
-      - targets: ["localhost:8000"]
+      - targets: ["${FASTAPI_HOST}"]
 
   - job_name: "streamlit"
     scrape_interval: 5s
     static_configs:
-      - targets: ["localhost:8501"]
+      - targets: ["${STREAMLIT_HOST}"]
