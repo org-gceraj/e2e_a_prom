@@ -41,16 +41,25 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
+    env:
+      ACTIONS_STEP_DEBUG: true
+      ACTIONS_RUNNER_DEBUG: true
+  
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
+          debug: true
           host:     ${{ secrets.EC2_PROM_HOST }}
           username: ${{ secrets.EC2_PROM_USER }}
           password: ${{ secrets.EC2_PROM_PASSWORD }}
+          ssh_option: "-vvv"
+          script_stop: true
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
-            docker stop e2e_v1-prom || true
-            docker rm e2e_v1-prom || true
-            docker run -d --name e2e_v1-prom -p 9090:9090 ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
+            whoami
+            pwd
+            ls -la
+#            docker pull ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
+#            docker stop e2e_v1-prom || true
+#            docker rm e2e_v1-prom || true
+#            docker run -d --name e2e_v1-prom -p 9090:9090 ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
