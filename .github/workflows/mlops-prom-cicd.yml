@@ -54,18 +54,18 @@ jobs:
         chmod 700 ~/.ssh
         ls -ltra ~
         ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N "" -q
-        echo "${{ secrets.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
+        echo "${{ vars.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/authorized_keys
-        ssh-keyscan -H ${{ secrets.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ vars.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
         ls -ltra ~/.ssh/
 
     - name: Debug SSH Connection
       run: |
-        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "echo connected"
+        ssh -i ~/.ssh/id_rsa ${{ vars.EC2_PROM_USER }}@${{ vars.EC2_PROM_HOST }} "echo connected"
     
     - name: Deploy
       run: |
-        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_PROM_USER }}@${{ secrets.EC2_PROM_HOST }} "whoami"
+        ssh -i ~/.ssh/id_rsa ${{ vars.EC2_PROM_USER }}@${{ vars.EC2_PROM_HOST }} "whoami"
   
 #    steps:
 #      - name: Deploy via SSH

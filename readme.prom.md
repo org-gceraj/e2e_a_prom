@@ -42,7 +42,8 @@ http://localhost:9090
 
 ssh -i id_ed25519 ubuntu@<EC2_IP>
 ssh -i id_ed25519 devopsadmin@98.92.118.33
-ssh devopsadmin@98.92.118.33
+ssh devopsadmin@98.92.118.33 whoami
+ssh ubuntu@35.170.81.241 whoami
 
 cd C:\MLOps_V2\Prometheus_GITHUB
 ssh -i ec2_prom.pub devopsadmin@98.92.118.33
