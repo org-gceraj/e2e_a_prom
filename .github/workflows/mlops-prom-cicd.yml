@@ -46,9 +46,9 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST_PROM }}
+          username: ${{ secrets.EC2_USER_PROM }}
+          key: ${{ secrets.EC2_SSH_KEY_PROM }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
             docker stop e2e_v1-prom || true
