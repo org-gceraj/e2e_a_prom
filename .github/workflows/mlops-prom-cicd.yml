@@ -51,6 +51,7 @@ jobs:
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
         ls -ltra ~
         ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N "" -q
         ls -ltra ~/.ssh/
