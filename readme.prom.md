@@ -2,7 +2,7 @@
 
 GIT Bash
 cd /C/MLOps_V2/Prometheus_GITHUB/C1_PROM
-git status && git add . && git commit -m "1.2 initial commit" && git push origin main
+git status && git add . && git commit -m "1.3 initial commit" && git push origin main
 
 https://github.com/org-gceraj/e2e_a_ui
 
