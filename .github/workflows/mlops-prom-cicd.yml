@@ -43,6 +43,9 @@ jobs:
 #    needs: build
     runs-on: ubuntu-latest
 
+    env:
+      FASTAPI_HOST: ${{ vars.FASTAPI_HOST }}
+      STREAMLIT_HOST: ${{ vars.STREAMLIT_HOST }}
 
     steps:
     - name: Setup SSH
