@@ -2,13 +2,17 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
 
+global:
+  scrape_interval: 15s
+
 scrape_configs:
   - job_name: "fastapi"
-    scrape_interval: 5s
-    static_configs:
-      - targets: ["${FASTAPI_HOST}"]
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/targets/fastapi.json
 
   - job_name: "streamlit"
-    scrape_interval: 5s
-    static_configs:
-      - targets: ["${STREAMLIT_HOST}"]
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/targets/streamlit.json
+
