@@ -1,1 +1,1 @@
-[{"targets": ["http://44.201.6.50:30080/predict"], "labels": { "service": "fastapi" }}]
+[{"targets": ["44.201.6.50:30080"], "labels": { "service": "fastapi" }}]
