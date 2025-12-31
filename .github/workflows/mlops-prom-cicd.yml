@@ -40,7 +40,7 @@ jobs:
  # =============================
   deploy:
     name: Deploy to EC2
-#    needs: build
+    needs: build
     runs-on: ubuntu-latest
 
     env:
@@ -83,14 +83,14 @@ jobs:
               "targets": ["${FASTAPI_HOST}:8000"],
               "labels": { "service": "fastapi" }
             }
-          ]' | sudo tee /etc/prometheus/targets/fastapi.json
+          ]' | tee /etc/prometheus/targets/fastapi.json
     
           echo '[
             {
               "targets": ["${STREAMLIT_HOST}:8501"],
               "labels": { "service": "streamlit" }
             }
-          ]' | sudo tee /etc/prometheus/targets/streamlit.json
+          ]' | tee /etc/prometheus/targets/streamlit.json
       
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.3
