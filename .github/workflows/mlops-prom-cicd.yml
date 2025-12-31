@@ -80,17 +80,17 @@ jobs:
         script: |
           echo '[
             {
-              "targets": ["${FASTAPI_HOST}:8000"],
+              "targets": ["${FASTAPI_HOST}"],
               "labels": { "service": "fastapi" }
             }
-          ]' | tee /etc/prometheus/targets/fastapi.json
+          ]' | tee /etc/prometheus/fastapi.json
     
           echo '[
             {
-              "targets": ["${STREAMLIT_HOST}:8501"],
+              "targets": ["${STREAMLIT_HOST}"],
               "labels": { "service": "streamlit" }
             }
-          ]' | tee /etc/prometheus/targets/streamlit.json
+          ]' | tee /etc/prometheus/streamlit.json
       
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.3

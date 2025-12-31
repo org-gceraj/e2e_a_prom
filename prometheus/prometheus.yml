@@ -9,10 +9,10 @@ scrape_configs:
   - job_name: "fastapi"
     file_sd_configs:
       - files:
-          - /etc/prometheus/targets/fastapi.json
+          - /etc/prometheus/fastapi.json
 
   - job_name: "streamlit"
     file_sd_configs:
       - files:
-          - /etc/prometheus/targets/streamlit.json
+          - /etc/prometheus/streamlit.json
 
