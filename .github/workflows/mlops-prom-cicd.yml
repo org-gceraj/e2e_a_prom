@@ -43,12 +43,12 @@ jobs:
 #    needs: build
     runs-on: ubuntu-latest
 
-    env:
-      ACTIONS_STEP_DEBUG: true
-      ACTIONS_RUNNER_DEBUG: true
 
     steps:
     - name: Setup SSH
+      env:
+        ACTIONS_STEP_DEBUG: true
+        ACTIONS_RUNNER_DEBUG: true
       run: |
         mkdir -p ~/.ssh
         chmod 700 ~/.ssh
