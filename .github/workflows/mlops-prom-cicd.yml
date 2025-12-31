@@ -78,8 +78,8 @@ jobs:
         key: ${{ secrets.EC2_PROM_SSH_KEY }}
         script_stop: true
         script: |
-          echo '[{"targets": ["${FASTAPI_HOST}"], "labels": { "service": "fastapi" }}]' > /gceraj/fastapi.json
-          echo '[{"targets": ["${STREAMLIT_HOST}"],"labels": { "service": "streamlit" }}]' > /gceraj/streamlit.json      
+          echo "[{\"targets\": [\"${{ vars.FASTAPI_HOST }}\"], \"labels\": { \"service\": \"fastapi\" }}]" > /gceraj/fastapi.json
+          echo "[{\"targets\": [\"${{ vars.STREAMLIT_HOST }}\"], \"labels\": { \"service\": \"streamlit\" }}]" > /gceraj/streamlit.json
 
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.3
