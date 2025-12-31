@@ -34,9 +34,9 @@ jobs:
           file: ./docker/prom.dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/e2e_v1-prom:1.1
-            build-args: |
-              FASTAPI_HOST=${{ vars.FASTAPI_HOST }} 
-              STREAMLIT_HOST=${{ vars.STREAMLIT_HOST }} 
+          build-args: |
+            FASTAPI_HOST=${{ vars.FASTAPI_HOST }} 
+            STREAMLIT_HOST=${{ vars.STREAMLIT_HOST }} 
 
  # =============================
  # JOB 2: Deploy to EC2
