@@ -1,1 +1,1 @@
-[{"targets": ["44.201.6.50:30080"], "labels": { "service": "fastapi" }}]
+[{"targets": ["35.170.81.241:30080"], "labels": { "service": "fastapi" }}]
