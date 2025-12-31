@@ -51,13 +51,16 @@ jobs:
         ACTIONS_RUNNER_DEBUG: true
       run: |
         mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_PROM_SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ vars.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
         chmod 700 ~/.ssh
         ls -ltra ~
-        ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N "" -q
-        echo "${{ vars.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/authorized_keys
-        ssh-keyscan -H ${{ vars.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
-        ls -ltra ~/.ssh/
+#        ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N "" -q
+#        echo "${{ vars.EC2_PROM_SSH_KEY }}"| tr -d '\r' > ~/.ssh/authorized_keys
+#        ssh-keyscan -H ${{ vars.EC2_PROM_HOST }} >> ~/.ssh/known_hosts
+#        ls -ltra ~/.ssh/
 
     - name: Debug SSH Connection
       run: |
