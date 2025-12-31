@@ -83,14 +83,14 @@ jobs:
               "targets": ["${FASTAPI_HOST}"],
               "labels": { "service": "fastapi" }
             }
-          ]' > /etc/prometheus/fastapi.json
+          ]' > /gceraj/fastapi.json
     
           echo '[
             {
               "targets": ["${STREAMLIT_HOST}"],
               "labels": { "service": "streamlit" }
             }
-          ]' > /etc/prometheus/streamlit.json
+          ]' > /gceraj/streamlit.json
       
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.3
